@@ -1,0 +1,68 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: plasmon-corrected-March14.aux
+The style file: apsrev4-1.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: plasmon-corrected-March14Notes.bib
+Database file #2: lit.bib
+control{REVTEX41Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
+control{apsrev41Control}, control.key{N/A}, control.author{08}, control.editor{1}, control.title{}, control.pages{0}, control.year{1}, control.eprint{N/A}, 
+Warning--jnrlst (dependency: not reversed) set 1
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+Control: key (0) 
+Control: author (8) initials jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (-1) disabled
+Control: page (0) single
+Control: year (1) truncated
+Control: production of eprint (0) enabled
+Warning--missing publisher in AM05
+You've used 48 entries,
+            5847 wiz_defined-function locations,
+            1942 strings with 22338 characters,
+and the built_in function-call counts, 44950 in all, are:
+= -- 2959
+> -- 1103
+< -- 315
++ -- 359
+- -- 269
+* -- 6762
+:= -- 4455
+add.period$ -- 46
+call.type$ -- 48
+change.case$ -- 188
+chr.to.int$ -- 56
+cite$ -- 49
+duplicate$ -- 4231
+empty$ -- 3359
+format.name$ -- 664
+if$ -- 8948
+int.to.chr$ -- 1
+int.to.str$ -- 55
+missing$ -- 559
+newline$ -- 190
+num.names$ -- 138
+pop$ -- 1811
+preamble$ -- 1
+purify$ -- 230
+quote$ -- 0
+skip$ -- 1702
+stack$ -- 0
+substring$ -- 1228
+swap$ -- 3886
+text.length$ -- 125
+text.prefix$ -- 0
+top$ -- 10
+type$ -- 639
+warning$ -- 2
+while$ -- 143
+width$ -- 0
+write$ -- 419
+(There were 2 warnings)

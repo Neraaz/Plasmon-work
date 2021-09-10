@@ -1,0 +1,833 @@
+%%%%%%%%%%%%  Generated using docx2latex.com  %%%%%%%%%%%%%%
+
+%%%%%%%%%%%%  v2.0.0-beta  %%%%%%%%%%%%%%
+
+\documentclass[aps,amsmath,amssymb, preprint, 12pt]{revtex4-1}
+%\documentclass[prb,amsmath,amssymb,preprint]{revtex4-1}
+%\documentclass[a4paper, fleqn, 12pt, oneside,  ]{report}
+\usepackage{amsmath, latexsym, color, graphicx, tabularx, booktabs, enumerate}
+\usepackage{multirow}
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{epstopdf}
+
+\date{\today}
+
+
+
+
+\usepackage[normalem]{ulem} 
+
+%%%%%%%%%%%%%%%%%%%% Document code starts here %%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\author{Niraj K. Nepal$^{1*}$}
+\author{Santosh Adhikari$^1$}
+\author{Bimal Neupane$^1$}
+\author{Shiqi Ruan$^1$}
+\author{Santosh Neupane$^1$}
+\author{Adrienn Ruzsinszky$^{1\dagger}$}
+\affiliation{[1] Department of Physics, Temple University, Philadelphia, Pennsylvania 19122, United States}
+
+\title{Understanding plasmon dispersion in nearly-free-electron metals: the relevance of exact constraints for novel exchange-correlation kernels within time-dependent density functional theory}
+\begin{abstract}
+ Small-wavevector excitations in Coulomb-interacting systems can be decomposed into the high-energy collective longitudinal plasmon and the low-energy single-electron excitations. At the critical wavevector and corresponding frequency where the plasmon branch merges with the single-electron excitation region, the collective energy of the plasmon dissipates into single electron-hole excitations. The jellium model provides a reasonable description of the electron-energy-loss spectrum (EELS) of metals close to the free-electron limit. The random phase approximation (RPA) is exact in the high-density limit but can capture the plasmonic dispersion reasonably even for densities with r$_s$ $>$ 1. RPA and all beyond-RPA methods investigated here, result in a wrong infinite plasmon lifetime for a wavevector smaller than the critical one where the plasmon dispersion curve runs into particle-hole excitations. Exchange-correlation kernel corrections to RPA modify the plasmon dispersion curve. There is however a large difference in the construction and form of the kernels investigated earlier. Our current work introduces recent model exchange-only and exchange-correlation kernels and discusses the relevance of some exact constraints in the construction of the kernel. We show that, because the plasmon dispersion samples a range of wavevectors smaller than the range sampled by the correlation energy, different kernels can make a strong difference for the correlation energy and a weak difference for the plasmon dispersion. This work completes our understanding about the plasmon dispersion in realistic metals, such as Cs, where a negative plasmon dispersion has been observed. We find only positive plasmon dispersion in jellium at the density for Cs. 
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+
+
+\noindent Due to its computational feasibility and relatively high accuracy, approximate Kohn-Sham density-functional theory (KS-DFT) simulations are the basis of present-day first-principles computational materials science. Particle-particle interactions can require treatment beyond semilocal KS-DFT \cite{ORR02}. Experimental applications heavily rely on understanding and guiding electron-electron interaction. A relevant example of electron-electron interaction is scattering resulting in electron energy loss. Experimentally the electron loss spectrum can be realized by electron energy loss spectroscopy or inelastic scattering \cite{R06, SSSK95}.\\ 
+
+Excited states can be accurately characterized by expensive Green’s function techniques. By virtue of the Runge-Gross theorem \cite{RG84}, DFT can be extended to time-dependent processes. Time-dependent density-functional theory (TDDFT) is becoming an attractive alternative to many-body perturbation theory and can offer, in principle, an unbiased and independent framework complementary to experimental observations, enabling the interpretation of specific experimental observations and predictions of new materials with targeted properties \cite{U11}.\\
+
+Plasmon excitations are collective oscillations of electrons in the absence of an external electric field, that incorporate Coulomb interaction between electrons \cite{P64, GV05}. Due to the electron-electron interactions, plasmon excitations establish a high barrier when testing \textit{ab initio} theories. When the external perturbation is weak, linear response TDDFT \cite{PGG96} is a useful tool to describe optical excitation energies. In TDDFT the electron energy loss is quantified by the imaginary part of $ \chi $ , the spatially nonlocal and dynamic density-density response function. The poles of the interacting density-density response function contain information about the optical excitation energies. The same density-density response function can deliver further information about the plasmons for a range of wavevectors.\\  
+
+Plasmon dispersion in nearly-free-electron alkali metals has attracted a great interest among experimentalists and theorists. The negative dispersion in the volume plasmon of the low-density alkali metals such as Rb and Cs has triggered a debate about the origin of the anomaly observed by most theoretical approximations within TDDFT and Fermi liquid theories \cite{VSF89}. A strong failure of approximations based on TDDFT with a static exchange-correlation kernel is the lack of a damping mechanism which results in an infinite lifetime of plasmons for a region of wavevectors smaller than the critical wavevector that separates plasmonic and particle-hole excitations \cite{VSF89, PN66}. {\color{red} Such a damping mechanism is provided by time-dependent current-density functional theory (TDCDFT) \cite{VK96,VUC97,UV02} or by a frequency-dependence in the exchange-correlation kernel \cite{VUC97, RNPP}. The plasmon broadening from the frequency dependence is a very small fraction of the plasmon frequency, and the frequency dependence of the kernel has a very small effect on the plasmon dispersion \cite{RNPP}}. The negative plasmon dispersion in low-density alkali metals can be attributed to
+correlation effects or band structure \cite{AK94, KE99, T92, TS92}. There are pros and contras for both explanations in the literature \cite{T92, TS92}. In heavier alkali metals such as Cs, electron transition to the near-Fermi-level \textit{d} bands can occur \cite{AK94, KE99}. The transition energy of these electrons is comparable to the plasmon energy, potentially causing a negative dispersion. Additional corrections to the interacting response function or dielectric function can originate in a weak lattice potential and core polarization effects \cite{VSF89}.\\ 
+
+The random phase approximation (RPA) is a {\color{red} method based on time-dependent Hartree theory} that is often used to obtain the ground-state correlation energy of bulk and two-dimensional materials \cite{BP53, NRB18, NABR19, SGK13, HSK10}. Although RPA relies on the linear response TDDFT framework, its excitation energies are inaccurate because of the overestimated short-range exchange-correlation effects \cite{LP75}. The exact exchange-correlation kernel f$_{xc}$ that would provide these effects is a functional derivative of the exchange-correlation potential. RPA is often interpreted within DFT to have roots in the adiabatic connection fluctuation dissipation theorem \cite{LP77}. The bare RPA f$_{xc}$ $=$ 0 without a band structure does not yield a negative dispersion in heavy alkali metals \cite{AK94}. Theoretical predictions from the late 80's in polycrystalline metals showed negative dispersion for Cs beyond RPA when the band structure was included \cite{VSF89}. Some investigations of the role of correlation in the plasmon dispersion discuss kernels, but most tests consider the exchange-correlation effects at the level of adiabatic local density functional approximation (ALDA) only. The work of Tatarczyk et al. \cite{TSS01} steps beyond this limitation to some extent by considering some more model kernels based either on the uniform electron gas paradigm or on other constraints.\\
+
+In our current work we aim to fill the gap in analyzing the plasmon dispersion with recent exchange-correlation kernels, beyond the early ones developed in the 90's. Our work aims to go beyond a simple analysis of exchange-correlation effects with kernels. The major goal here is to give an \textit{a priori }numerical analysis why kernels by themselves (without the band structure effects) can not predict negative dispersion in low density alkali metals. In this work, we rely on the jellium model. The dimensionless density parameters (r$_s$) for the jellium model corresponding to different metals are taken from Ref.~\cite{AM05}. We demonstrate that the exact constraints can lead to kernels that correctly predict a positive plasmon dispersion in jellium.
+
+\section{Methodology: Exchange-correlation kernels within linear response TDDFT}
+
+Nonempirical construction of density functionals has allowed widespread and successful applications of these approximations for the ground state \cite{SRZSRP16}. Various exact constraints such as the uniform electron gas limit, Lieb-Oxford bound or the one-electron limit are known for the ground state \cite{PRTSSC05}. According to linear response theory the interacting and noninteracting density-density response functions are coupled by the Dyson equation:
+
+\begin{equation}
+\chi _{ \lambda } \left( q, \omega  \right) =  \chi _{0} \left( q, \omega  \right) + \chi _{0} \left( q, \omega  \right)  \left(  \lambda v_{c} \left( q \right) +f_{xc}^{ \lambda } \left( q, \omega  \right)  \right)  \chi _{ \lambda } \left( q, \omega  \right),
+\label{eq1}
+\end{equation}
+
+\noindent $\chi _{ \lambda } ( q, \omega )$  and   $\chi _{0} ( q, \omega )$  are the interacting and noninteracting response functions, respectively,  \( v_{c} \left( q \right) =\frac{4 \pi \lambda }{q^{2}} \)  and  \( f_{xc}^{ \lambda } \left( q, \omega  \right)  \)  are the Coulomb and exchange-correlation kernels. $ \lambda $  is the coupling constant that provides the adiabatic connection between a noninteracting Kohn-Sham ($\lambda$ $=$ 0) and the interacting real system ($\lambda$ $=$ 1) response. When Eq.~\ref{eq1} is applied to the uniform electron gas,  \(  \chi _{0} \left( q, \omega  \right)  \)  becomes the Lindhard function with complex frequencies \cite{L54}, a basic input to our current research. In the adiabatic approximation, the exact kernel is a second functional derivative of the ground state exchange-correlation energy. In practice the exact kernel is unknown but can be modeled by satisfying exact physical constraints. Kernels are related to the $``$local field factors$"$  as
+G (q, $\omega$) $=$ $\frac{f_{xc}(q, \omega)}{-v_c (q)}$.\\
+
+Many real systems have densities close to the paradigm uniform electron gas, as in alkali metals. The uniform electron gas is therefore a simple model system with physical relevance. All exchange-correlation kernels in this work model the uniform electron gas with known limiting behavior at q \(  \rightarrow 0 \)  and q \(  \rightarrow \infty. \)  The simplest approximation is known as the adiabatic local density approximation (ALDA) kernel for $\lambda$ $=$ 1 \cite{ZS80}:\\
+
+\begin{equation}
+f_{xc}^{ALDA} ( q \rightarrow 0,  \omega =0 ) =-\frac{4 \pi A}{k_{F}^{2}}
+\end{equation}
+
+\noindent with  \( A=\frac{1}{4}-\frac{k_{F}^{2}}{4 \pi }\frac{d^{2} \left( n \varepsilon _{c} \right) }{dn^{2}} \), where  \( k_{F}= \left( 3 \pi ^{2}n \right) ^{1/3} \)  is the Fermi wavevector and  \(  \varepsilon _{c} \)  the correlation energy per particle of the uniform electron gas.  \( A=\frac{1}{4} \)  belongs to the exchange-only ALDA, while the density-dependent term in  \( A \)  gives the correlation beyond the high-density limit.\\
+
+The real-space representation of ALDA is a delta function which indicates the spatial locality of this kernel. ALDA gives reasonable accuracy for low-frequency, long-wavelength excitations, but is not the right choice for a general correction to RPA \cite{ZS80}. The ALDA kernel was applied to the ground state correlation energy of the uniform electron gas but makes an error of $ \sim $ 0.5 eV \cite{LGP00}. This error is the same in magnitude but of opposite sign to the error that RPA makes for the same system.\\
+
+The ALDA kernel can be made nonlocal, by applying a cutoff that makes the exchange-correlation kernel cancel the Hartree kernel for q $>$ k\textsubscript{cut}. The cutoff is introduced by the renormalized ALDA (rALDA) expression \cite{OT12}
+
+\begin{equation}
+ f_{xc}^{rALDA} ( n,q) =- [ \theta ( k_{cut}-q ) \frac{4 \pi }{k_{cut}^{2}}+ \theta  ( q-k_{cut} ) \frac{4 \pi }{q^{2}} ]
+\end{equation}
+
+\noindent with the cutoff wavevector   \( k_{cut}=\frac{k_{F}}{\sqrt{A}}. \) \ \ By construction the rALDAxc kernel keeps the correct  q \(  \rightarrow 0 \)  limit of ALDA, but improves the wrong q \(  \rightarrow \infty \) \  behavior of ALDAxc. For inhomogeneous systems, more ingredients like the density gradient or the kinetic energy density give more flexibility for kernels, as for ground state density functional approximations. The kinetic energy density is one of the ingredients of the nonlocal energy optimized (NEO) exchange-only kernel \cite{BLR16}.\\
+
+The NEO kernel improves the ground state correlation energy and structural properties of real systems beyond RPA \cite{BLR16}. The NEO kernel is designed to satisfy further physical constraints beyond both ALDA or rALDA, and has the form
+
+\begin{equation}
+f_{x}^{NEO}=-\frac{4 \pi }{2q^{2}} [ 1-e^{- \beta q^{2}/k_{F}^{2}} ]
+\end{equation}
+
+where  \(  \beta =\frac{1}{4\widetilde{c} \left( 1-z^{2} \right) }. \)   The one-electron limit is reached when the ingredient  \( z=\frac{ \tau^{w}}{ \tau} \) equals 1, where  \(  \tau^{w} \)  is the one-electron kinetic energy density \cite{W35} and  \(  \tau \)  the positive kinetic energy density constructed from the Kohn-Sham orbitals. In the uniform electron gas,  \( z \)  is zero. When q \(  \rightarrow 0, \) \ \  the NEO kernel is properly independent of q for the uniform electron gas. The parameter  \( \widetilde{c} \)  has a key relevance to the current work. In the construction of NEO,  \( \widetilde{c} \)  is designed to give a correction to the RPA correlation energy in the high-density limit. In other words, the standard  \( \widetilde{c}=0.264 \) \ parameter in NEO provides a unique fit to the exact second-order correlation energy for the spin-unpolarized electron gas.  The $``$second-order exchange$"$  contribution to the second-order correlation energy of the uniform gas is the correction to direct RPA from wavefunction anti-symmetry that survives in the high-density limit. It can be evaluated from explicit expressions given by von Barth and Hedin for RPA \cite{VH72} and by Langreth and Perdew \cite{LP75}  beyond RPA.\\
+
+ \noindent \(  \beta  \)  can be chosen to satisfy another constraint relevant to the long-wavelength ( \( q \rightarrow 0 )  \)  limit. This choice is also made in the ALDA, rALDA, and in the CP07 dynamic exchange-correlation kernel constructed by Constantin and Pitarke \cite{CP07}. The compressibility sum rule, \cite{I82}, as
+
+\begin{equation}
+f_{xc} ( n;q \rightarrow 0,  \omega =0 ) =\frac{d^{2}}{dn^{2}} [ n \varepsilon _{xc} ( n )  ] ,
+\end{equation}
+
+\noindent is an important requirement for frequency-dependent exchange-correlation kernels. Satisfying the compressibility sum rule,  \(  \beta  \)  becomes
+
+\begin{equation}
+ \beta =\frac{1}{4\widetilde{\text{c}}}   =-\frac{2k_{F}^2}{4 \pi }\frac{d^{2}}{dn^{2}} [ n \varepsilon _{xc} ( n )  ] = 2A
+\end{equation}
+or   \( \widetilde{c}=0.5 \)  in the high-density limit.
+
+Thus the energy optimized value of  \( \widetilde{c}=0.264 \)  in the high-density limit is different from the value  \( \widetilde{c}=0.5 \) \  that yields the correct small- \( q \)  kernel in the high-density limit. In the next section we will extensively discuss the impact of these physical constraints on the plasmon dispersion and provide a novel insight about the role of correlation effects. It will turn out that the difference between the ALDA and NEO kernels is important for the correlation energy, but not very important for the plasmon dispersion.\\
+
+To set the scale of the problem, we plot in Fig.~\ref{fig0} three kernels as functions of wavevector q: the ALDAxc kernel (exact at small q), the NEO xc kernel with $\widetilde{c}$ $=$ 0.264 (which we will argue later is more correct than ALDAxc at larger q), and minus the Hartree kernel (-4$\pi/\text{q}^2$). Clearly, in the wavevector region 0 $<$ q/k$_F$ $<$ 1 that shapes the plasmon dispersion, the Hartree kernel (the only one present in RPA) dominates over the xc kernel. This dominant effect of the Hartree kernel explains the overall good performance of RPA for plasmon dispersion. For wavevectors q/k$_\text{F}$ $>$ 1, which are important for the correlation energy, the xc kernels have a larger effect. An even better xc kernel might interpolate between ALDAxc at small q and NEO at larger q.
+
+\begin{figure}[h!]
+	\includegraphics[scale=0.4]{figure_1.pdf}
+	\caption{The Hartree kernel, ALDAxc kernel, and standard NEO xc kernel with $\widetilde{c}$ $=$ 0.264 vs Q $=$ q/k$_F$ for the uniform electron gas at r$_s$ $=$ $(\frac{3}{4\pi n})^{1/3}$ $=$ 4. For ease of comparison, it is actually minus the Hartree kernel (-4$\pi/\text{q}^2$) that is plotted here.}
+	\label{fig0}
+\end{figure}
+
+\section{Plasmon dispersion with spatially nonlocal exchange-correlation kernels in nearly-free-electron metals}
+
+
+The alkali metals Na and K are nearly-free-electron (NFE) systems and therefore realizations of the uniform electron gas. Correlation effects in alkali metals can be strong enough, especially for low electron densities, to impact electronic excitations. The high-resolution electron energy loss experiments indicate that the plasmon dispersion in heavy alkali metals such as Rb and Cs becomes negative, i.e., the plasmon frequency decreases with increasing wavevector q \cite{VSF89}. Since all the above experiments and calculations were performed for periodic crystals, it is difficult to decouple correlation and band structure effects \cite{STLS68} in the dispersion of the plasmon excitations.\\
+
+Further calculations by Ku and Eguiluz in K crystal \cite{KE99} indicate the relevance of band structure versus correlation and demonstrate that the exchange-correlation effects beyond RPA at the ALDA level have only a minor role in the dispersion of plasmons. A similar observation was made by Quong and Eguiluz  \cite{QE93} for Na crystal. Although\ crystal\ periodicity is important when modeling realistic conditions, the jellium model can offer an important way to separate the impact of many-body correlations and band structure. Within our work, we want to provide an additional theoretical and numerical insight only about the many-body correlation effects and explain why in general no beyond-RPA approximation for jellium can predict the correct plasmon dispersion and lifetime for Cs. The justification of our results is based only on exact physical constraints imposed on the construction of beyond-RPA approximations.  By using the jellium model for alkali metals, we can build upon the conclusion that ALDA gives a minor improvement beyond RPA for the plasmon dispersion. With the nonlocal exchange-correlation kernels developed since  the later 90's, we can make further conclusions about how these recent approximations compare to ALDA and RPA in terms of correlation effects.\\
+
+We can make two groups of assessed approximations. The first group includes exchange-only and exchange-correlation kernels based on the ALDA approximations. ALDAx and ALDAxc are both local kernels but differ in correlation contribution. rALDAx and rALDAxc are nonlocal. The second group consists of NEO exchange-only kernels \cite{BLR16} with the $\widetilde{c}$ parameter constructed by satisfying different physical constraints. The default version of the NEO kernel yields the exact correction to the RPA correlation energy of jellium in the high-density limit:
+
+\begin{equation}
+ e_{c}^{2X}=\frac{3}{8 \pi ^{3}} \int _{0}^{\infty}dKK^{2}\widetilde{G}_{x} ( K )  \int _{0}^{\infty}dW \{ 2 b (K, W)  \} ^{2},
+\end{equation}
+
+\noindent where  \( \widetilde{G}_{x} \left( K \right)  \)  refers to the kernel, according to the correspondence between kernels and local-field factors.  \( K=\frac{q}{2k_{F}} \)  is a dimensionless wavevector, and  \( W=\frac{ \Omega }{2k_{F}^{2}} \) \ is a dimensionless frequency. The explicit expression for the second-order exchange energy   \( e_{c}^{2X} \) comes from Langreth and Perdew \cite{LP77} beyond RPA and uses the RPA correlation energy for the uniform electron gas given by von Barth and Hedin \cite{VH72}. The $\widetilde{c}$ parameter that corresponds to the second-order correlation energy was found to be 0.264.\\ 
+
+
+\noindent Alternatively,\ in the long-wavelength limit we can use the compressibility sum rule formulated as   \( \frac{d^{2}}{dn^{2}} \left[ n \varepsilon _{xc} \left( n \right)  \right]  \)  to determine $``$ \( \widetilde{c} \) $"$ . Then the $\widetilde{\text{c}}$ parameter of NEO can be estimated from the compressibility sum rule of the ALDAxc expression. This fitting delivers a different  \( \widetilde{c} =  \) (0.43 - 0.47) at metallic densities considered here. While formally the NEO approximation remains an exchange-only kernel, this kind of fitting brings long-wavelength exchange-correlation effects into our NEO kernel \cite{CP07}. \\
+
+Clearly $``$ \( \widetilde{c} \) $"$  controls the correlation or screening within the NEO approximation starting from  \(  $\( \widetilde{c} \)$ \rightarrow \infty \) \ in RPA. The impact of $``$ \( \widetilde{c} \) $"$  as a screening parameter on ground state correlation energies was established by Bates et al in 2016 \cite{BLR16}.  Changing $``$ \( \widetilde{c} \) $"$  from its default 0.264 value was shown to yield different correlation energies in the uniform electron gas at r\textsubscript{s} = 4. \\
+
+The exchange-only NEO kernel can be explicitly turned into an exchange-correlation approach by replacing $``$ \( \widetilde{c} \) $"$  by an electron-density-dependent parameter. This approach was tested for jellium slab correlation energies at moderate densities, and resulted in improved integrated correlation energy \cite{RCP16}. For a given density, the density dependence can make $``$ \( \widetilde{c} \) $"$  significantly smaller than its default value. In our analysis we also investigate the effect of a low $``$ \( \widetilde{c} \) $"$  parameter on the plasmon dispersion of various NFE metals. For testing purposes we choose  \( \widetilde{c}=0.0037. \)  Notice that this choice of  \( \widetilde{c} \)  represents an unphysically low density according to Eq. (13) of Ref.~\onlinecite{RCP16}. \\
+
+At first, we discuss the plasmon dispersion up to the wavevector region where plasmons decay into single-particle excitations. We consider all the exchange-correlation kernels described above. Within the static approximation for the kernel  \( f_{xc} \left( q \right) , \)  the plasmon frequency  \(  \omega _{p} \left( q \right)  \)  is found by solving the equation  \(  \epsilon  \left( q, \omega  \right) =1- \left( v_{c} \left( q \right) +f_{xc} \left( q \right)  \right)  \chi _{0} \left( q , \omega \right) =0, \)  for  \(  \lambda =1  \) \cite{TSS01}, and the solutions are undamped outside the particle-hole contiunuum, i.e., for  \( q<q_{c} \)  where  \( \frac{ \omega _{p} \left( q_c \right) }{ \varepsilon _{F}}=2 \left( \frac{q_{c}}{k_{F}} \right) + \left( \frac{q_{c}}{k_{F}} \right) ^{2}. \)  For the r\textsubscript{s }values considered here,  \( q_{c}/k_{F} \approx 1 \ll k_{cut}/k_{F} \approx 2, \)  where  \( k_{cut} \) \  is the cutoff wavevector for a kernel. Thus rALDA and ALDA kernels will yield the same plasmon dispersion.\\
+
+Al is a metal with rather high density, and RPA becomes relatively exact in the high-density limit \cite{QE93}. Here, we model Al by jellium with r$_s$ $=$ 2.07. The small wavevector behavior is demonstrated by the correct plasmon energy known from an EELS experiment \cite{PO75}. All ALDA and rALDA kernels return the correct long-wavelength limit of f$_{xc}$. The $\widetilde{\text{c}}$ \(  =  \) 0.47\  NEO exchange kernel keeps the correct long-wavelength of f$_{xc}$. Since the compressibility sum rule delivers direct information about the long-wavelength limit, among all the approximations NEO $\widetilde{\text{c}}$ \(  =  \) 0.47 has a direct impact on the curvature of the dispersion. The fitting against this exact constraint designates that the plasmon dispersion must start out as horizontal at small wavevectors. NEO $\widetilde{\text{c}}$ \(  =  \) 0.47 exemplifies the best behavior in the long wavelength limit (q $\rightarrow$ 0) that any static kernel for jellium at r$_s$ $=$ 2.07 can demonstrate.\\
+
+Comparing the ALDA and rALDA kernels in the left panel of Fig.~\ref{fig1}, it is apparent that the nonlocal feature of the rALDA relevant in the ground state correlation energy does not change the plasmon dispersion, and all ALDA and rALDA approximations yield the same dispersion curve. The NEO  \( \widetilde{c} \) = 0.264 and  \( \widetilde{c} \) = 0.47 methods basically agree, while the NEO \( \widetilde{c} \) = 0.0037 is completely unphysical with low plasmon frequencies as an indication of the lack of exact constraints (See Fig.~\ref{fig1}).
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 1 starts here %%%%%%%%%%%%%%%%%%%%
+
+
+\begin{figure}[h!]	
+	\includegraphics[scale=0.3]{figure_2a.pdf}
+	\includegraphics[scale=0.3]{figure_2b.pdf}
+	\caption{The plasmon dispersion for Al (modeled as jellium with r$_s$ $=$ 2.07) up to the critical wavevector. The left panel shows the dispersion obtained with RPA and beyond-RPA with ALDAx, ALDAxc, rALDAx and rALDAxc approximations. The right panel shows the dispersion from RPA and the three NEO approximations with the  \( \widetilde{c} \)  parameters corresponding to different choices.}
+	\label{fig1}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 1 Ends here %%%%%%%%%%%%%%%%%%%%
+
+
+For jellium at r\textsubscript{s}=3.93 (as for Na), all ALDA and rALDA dispersion curves barely differ in the left panel of Fig.~\ref{fig2}. As in Al, there is no significant change coming from the nonlocal kernels. According to the right subfigure, the NEO  \( \widetilde{c}=0.264 \)  and NEO  \( \widetilde{c}=0.44 \)  kernels differ more than they do in Al for a range of $ \sim $ 0.5 for dimensionless wavevector Q. NEO  \( \widetilde{c}=0.0037 \)  leads to unphysically low plasmon frequencies. \\
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 2 starts here %%%%%%%%%%%%%%%%%%%%
+
+
+\begin{figure}[h!]	
+	\includegraphics[scale=0.3]{figure_3a.pdf}
+	\includegraphics[scale=0.3]{figure_3b.pdf}
+	\caption{The plasmon dispersion for Na (modeled as jellium with r$_s$ $=$ 3.93), up to the critical wavevector. The left panel shows the dispersion obtained with RPA and beyond-RPA with ALDAx, ALDAxc, rALDAx and rALDAxc approximations. The right panel shows the dispersion from RPA and the three NEO approximations with the  \( \widetilde{c} \)  parameters corresponding to different choices.}
+	\label{fig2}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 2 Ends here %%%%%%%%%%%%%%%%%%%%
+
+
+Cs is the alkali metal with the lowest density \cite{FSE97}. We modeled it here as jellium with r$_s$ $=$ 5.62. This characteristic manifests itself in the plasmon dispersion when comparing the approximations in the left and right panels of Fig.~\ref{fig3}. Being correct at small  \( q, \) \ the ALDAxc and rALDAxc  are more suitable than ALDAx for lower densities in Cs, but the nonlocality versus locality in rALDAxc and ALDAxc does not much affect the dispersion. Comparing the NEO approximations, NEO  \( \widetilde{c}=0.264 \)  results in more correction beyond-RPA than it does in the previous two metals. Furthermore NEO  \( \widetilde{c}=0.264 \)  yields more correction in the plasmon frequencies than any of the ALDA and rALDA kernels. The exact compressibility-sum-rule-based NEO  \( \widetilde{c}=0.43 \)  behaves more like ALDAx or ALDAxc. NEO  \( \widetilde{c}=0.0037 \)  considerably lowers the plasmon dispersion. At the first glance this could be mistaken for the observed behavior for the real low-density Cs.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 3 starts here %%%%%%%%%%%%%%%%%%%%
+
+
+\begin{figure}[h!]	
+	\includegraphics[scale=0.3]{figure_4a.pdf}
+	\includegraphics[scale=0.3]{figure_4b.pdf}
+	\caption{The plasmon dispersion for Cs (modeled as jellium with r$_s$ $=$ 5.62) up to the critical wavevector. The left panel shows the dispersion obtained with RPA and beyond-RPA with ALDAx, ALDAxc, rALDAx and rALDAxc approximations. The right panel shows the dispersion from RPA and the three NEO approximations with the $\widetilde{c}$ parameters corresponding to different choices.}
+	\label{fig3}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 3 Ends here %%%%%%%%%%%%%%%%%%%%
+
+To summarize the role of the exact constraints, we compare all the exchange and exchange-correlation models described above. Figure ~\ref{fig4} displays the small wavevector behavior of all kernels and of RPA. The exact dispersion relation is known to be quadratic in the wavevector q as E $ \sim $   \( q^{2} \) . Except NEO  \( \widetilde{c}=0.0037, \)  all exchange and exchange-correlation kernels and RPA are properly horizontal at small Q wavevectors and become properly quadratic as Q increases. The horizontal line is a consequence of the exact physical constraints satisfied by these methods. NEO  \( \widetilde{c}=0.0037 \)  is not consistent with any exact constraint. While NEO  \( \widetilde{c}=0.264 \) \ is based on the exact high-density limit of the correlation energy, the unphysical NEO deviates from this constraint and picks up a wrong negative quadratic dispersion. \\
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 4 starts here %%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]	
+	\centering
+	\includegraphics[scale=0.4]{figure_5.pdf}
+	\caption{The long wavelength behavior or all approximations considered in this work.}
+	\label{fig4}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 4 Ends here %%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 5 starts here %%%%%%%%%%%%%%%%%%%%
+We have also extracted the plasmon dispersion for the real metals Na and Cs by calculating the electron energy loss spectrum using the GPAW\cite{gpaw1, gpaw2, gpaw_response, ase} code. The results are presented in Figure~\ref{real}. We used the projector-augmented wave (PAW)\cite{B94} pseudopotential provided with the GPAW code, an energy cutoff of 600 eV, and a 16$\times$16$\times$16 k-point mesh to sample the Brillouin zone. Our calculations including band structure effects confirm that the band structure significantly alters the plasmon dispersion for Cs, while its effect is negligible for Na. The plasmon frequency at q$\rightarrow$0 shows a ~0.5 eV renormalization compared to the RPA value within the jellium model. The effect of the band structure in Cs is significantly large enough to dominate over the changes from one kernel to another.
+
+\begin{figure}[h!]
+\centering
+		\includegraphics[scale=0.32]{figure_6a.pdf}
+		\includegraphics[scale=0.32]{figure_6b.pdf}
+\caption{The plasmon dispersion of Na (left) and Cs (right) with RPA and some exchange-correlation kernels within the jellium model. For both Na and Cs, the dispersion with RPA is also displayed with band structure effects obtained from the GPAW code, showing results close to experiment \cite{VSF89}. The momentum transfer (\textbf{q}) is in the [100] direction for bulk solids.}
+\label{real}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 5 Ends here %%%%%%%%%%%%%%%%%%%%
+
+
+\section{The dynamic structure factor within and beyond-RPA}
+
+
+The dynamic structure factor \cite{LP77} or spectral function S(q, $\omega$) shows the distribution of frequencies $\omega$ for density fluctuations of wavevector q in the ground state of the uniform electron gas. Although it arises from all density fluctuations of a given wavevector, the spectral function for small wavevector typically peaks around the frequency of a plasmon. The inverse frequency width of this peak, by the uncertainty principle, provides a lower bound on the decay time for such a fluctuation, while the dependence of the peak on q reflects the plasmon dispersion. Here we will investigate the effects of various model exchange-correlation kernels on the spectral function. The dynamic structure factor  \( S \left( q, \omega  \right)  \)  is proportional to  Im\(\chi\)  \cite{JP85}, the loss component of the dynamic density-density response function:
+\begin{equation}
+S (q, \omega) = -\frac{1}{\pi} Im\chi(q, \omega) \Theta({\omega})
+\end{equation}
+This quantity has been investigated by Lewis and Berkelbach \cite{LB19} using an equation-of-motion coupled cluster singles and doubles formalism, which unlike our TDDFT methods allows for plasmon decay via multi-pair electron-hole decay channels. With our real static exchange-correlation kernels, the plasmon at small finite q does not decay.\\
+
+In Figure ~\ref{fig6}, we analyze our approximations at three wavevectors:  \( q=0.1k_{F}, \)   \( q=0.5k_{F}, \) \  and  \( q=k_{F}. \)  The latter wavevector is close to the one at which the plasmon decays into the single-pair electron-hole continuum at r\textsubscript{s} = 4. {\color{red}To obtain a physically observable broadening for our spectral function, we have utilized a frequency $\omega-i\eta$, where $\omega$ is real, in S(q,$\omega-i\eta$). We used $\eta =$ 0.032 Hartree and $\eta =$ 0.063 Hartree respectively for r$_s =$ 4 and r$_s =$ 5.62 (Cs). This broadening is much higher than the physical one recommended by Ref \cite{VUC97}, but is needed to make all the plasmon peaks more visible in the figure.} The first Figure~\ref{fig6} (a) compares RPA to the default NEO kernel with  \( \widetilde{c}=0.264. \)  The line shapes at  \( q=0.1k_{F} \)  and  \( q=0.5k_{F} \)  are very similar for both methods. At  \( q=k_{F} \)  the line shape from NEO becomes broader than the one from RPA, and the plasmon peak from NEO is shifted to a lower frequency. Figure ~\ref{fig6}.b compares three NEO kernels at r\textsubscript{s} = 4 for the same three wavevectors.\\
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 6 starts here %%%%%%%%%%%%%%%%%%%%
+
+
+\begin{figure}[h!]	
+
+	\includegraphics[scale=0.33]{figure_7a.pdf}
+		\includegraphics[scale=0.33]{figure_7b.pdf}
+		\vspace{1cm}
+		\includegraphics[scale=0.35]{figure_7c.pdf}
+	\caption{a: The jellium spectral functions for RPA and NEO\textbf{  \( \widetilde{c}=0.264 \) } at r\textsubscript{s }= 4. b: the spectral functions for three NEO kernels at r\textsubscript{s}=4. c: the jellium spectral functions for three NEO kernels at r\textsubscript{s}=5.62 corresponding to Cs. {\color{red} To make it more visible, the plasmon peak has been unphysically broadened. At q = 0.1k$_\text{F}$, we see only the plasmon peak and it is barely visible. At q = k$_\text{F}$, the plasmon peak is overlapped with the continuum of single particle-hole excitations.}}
+	\label{fig6}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 6 Ends here %%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 7 starts here %%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 7 Ends here %%%%%%%%%%%%%%%%%%%%
+The static structure factor S(q) is the integral over frequency of S(q, $\omega$), divided by the electron number N. S(q) determines the well-known correlation energy of the uniform electron gas. We will now show that the range of q/k$_F$ (less than or about equal to 4) that distributes to the correlation energy is much greater than the range of q/k$_F$ (less than or about equal to 1) that contributes to the plasmon dispersion. In the smaller range (but not in the larger one), the ALDAxc kernel is nearly sufficient, while the default NEO kernel is nearly sufficient over the larger range. This completes our plasmon dispersion analysis with an explanation why a negative dispersion cannot exist in jellium at the density of Cs.\\ 
+
+
+Exchange-correlation kernels can be applied to improve the ground state correlation energy of RPA through the adiabatic connection fluctuation dissipation theorem. This is the basis of the wavevector decomposition of the ground state exchange-correlation energy as known from Langreth and Perdew \cite{LP77}:
+
+\begin{equation}
+ E_{xc}= \int _{}^{}\frac{d^{3}q}{ ( 2 \pi ) ^{3}}\frac{1}{2} \int _{0}^{1}\frac{d \lambda }{ \lambda } ( \frac{4 \pi  \lambda }{q^{2}} ) N [ S_{ \lambda } ( {q} ) -1 ],
+ \label{eq10}
+\end{equation}
+
+\noindent where $ \lambda $  is the coupling constant along the adiabatic connection path and  \( S_{ \lambda } \left( {q} \right)  \)  is the static structure factor found by integrating S$_\lambda$ (q, $\omega$) over frequency and dividing by the electron number. According to the expression given by Eq.~\ref{eq10}, the exchange-correlation energy depends upon the dynamic structure factor. The exchange energy E$_x$ replaces S$_\lambda$ by S$_0$, and the correlation energy is E$_c$ $=$ E$_{xc}$ - E$_x$. Figure~\ref{fig7} shows the wavevector decomposition of the correlation energy for all exchange and exchange-correlation kernels considered here. We plot this for r\textsubscript{s} = 4 and r\textsubscript{s} = 5.62.\\ 
+
+The physical basis of our analysis is the exact exchange-correlation kernel   \( f_{xc} \left( q, \omega  \right)  \)  of the uniform electron gas. For the correlation energy, the static version of the kernel  \( f_{xc} \left( q,0 \right)  \)  can be applied to a good approximation \cite{LGP00}. Note that the frequency dependence at least qualitatively can also be ignored for \(  \omega  \approx  \omega _{p} \)  \cite{IG87, GK85}. The ALDA exchange-correlation kernel  \( f^{ALDA}_{xc} \left( q,0 \right)  \) approaches the exact kernel for the uniform electron gas at  \( q \rightarrow 0 \). In the long wavelength limit,
+
+\begin{equation}
+\lim\limits_{q \rightarrow 0} f_{xc} ( q,0) = \lim\limits_{q \rightarrow 0}f_{xc}^{ALDA} ( q,0 ).
+ \label{eq11}
+\end{equation}
+
+\noindent As we will see below, f$^{ALDA}_{xc}$ breaks down for q/k$_F$ $\geq$ 1, where our constraint-based NEO kernels become less negative and more accurate. Therefore, as suggested by Fig.~\ref{fig0}:
+
+
+
+\begin{equation}
+f_{xc}^{ALDA} ( q,0 ) <f_{xc} ( q,0 ) < 0
+\label{eq12}
+\end{equation}
+
+
+
+\noindent The ALDA approximation becomes a lower bound to the static exact exchange-correlation kernel for the correlation energy of the uniform electron gas. Figure ~\ref{fig7} visualizes the relation between ALDAxc, RPA and some other exchange-correlation kernels.  The ALDAxc is shown in the left panel of Figure ~\ref{fig7}. The ALDAxc is very accurate for small wavevectors but starts to deviate from NEO at q $=$ k$_F$. At \(  q=2k_{F} \)  the ALDAxc yields a strong overestimation of the correction to RPA correlation energy. All static beyond-RPA kernels make the exchange-correlation energy of RPA less negative for any density including r\textsubscript{s} = 5.62. The correlation energies from NEO  \( \widetilde{c}=0.264 \)  and from the NEO kernel fitted against the compressibility sum-rule  are close to each other but the unphysical NEO  \( \widetilde{c}=0.0037 \)  adds a much larger correction to the RPA correlation energy.\\
+
+The constraints of Equations~\ref{eq11} and~\ref{eq12} control the plasmon dispersion and the correlation energy. The dynamic structure factor becomes a link that couples the physics in the correlation energy and plasmon dispersion. From the correlation energy, the exact uniform-electron gas-based kernel must be less negative than the ALDAxc kernel. The NEO  \( \widetilde{c}=0.264 \)  kernel is uniform electron gas-based only through its energy optimization to the high-density limit, and performs reasonably for both plasmon dispersion and correlation energy in jellium.
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 8 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[h!]	
+	
+	\includegraphics[scale=0.3]{figure_8a.pdf}
+	\includegraphics[scale=0.3]{figure_8b.pdf}
+	\caption{Wavevector analysis of the ground state correlation-only energy of jellium from the dynamic structure factor for reduced wavevector  \( K=\frac{q}{2k_{F}}. \) The area under each curve is proportional to the correlation energy. The left figure shows the correlation-only energy for RPA, ALDA and NEO with the three choices for  \( \widetilde{c}, \)  for r\textsubscript{s}=4. The right figure shows the same for r\textsubscript{s}=5.62 corresponding to Cs.}
+	\label{fig7}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 8 Ends here %%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+\section{Conclusion}
+We have presented various model exchange-correlation kernels beyond-RPA for the plasmon dispersion within the jellium model for alkali metals. We have shown that the plasmon dispersion is strictly controlled by exact constraints. Additional physics beyond the ALDA kernel, such as nonlocality in space, can be unimportant for plasmon dispersion. Physical constraints such as the compressibility sum rule determine the plasmon dispersion with exchange-correlation kernels. Clearly none of our methods based on particle-hole RPA for jellium is able to predict the experimentally observed negative plasmon dispersion for the heavy alkali metal Cs which arises from band structure. The current exchange-correlation kernels do not have an explicit density dependence that could have a larger impact. For the exact exchange-correlation kernel, the ALDAxc is likely a lower bound (as suggested by Fig.~\ref{fig0}). The ALDAxc is accurate for  \( \frac{q}{k_{F}}<1, \)  the range of  \( q \)  that determines the plasmon dispersion, even though the ALDAxc kernel fails badly for  \( \frac{q}{k_{F}} \gg 1 \), a range that contributes significantly to the correlation energy.
+
+
+
+\section{Acknowledgment}
+ 
+The research of N. K. N., S. R. and A. R. was supported by the National Science Foundation under Grant {\fontsize{10pt}{12.0pt}\selectfont No.DMR-1553022}. We thank John P. Perdew for comments on the manuscript.
+
+\noindent$^*$ niraj.nepal@temple.edu\\
+$^\dagger$ Corresponding author: aruzsinszky@temple.edu\\
+
+
+
+
+%merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (-1) disabled
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{52}%
+	\makeatletter
+	\providecommand \@ifxundefined [1]{%
+		\@ifx{#1\undefined}
+	}%
+	\providecommand \@ifnum [1]{%
+		\ifnum #1\expandafter \@firstoftwo
+		\else \expandafter \@secondoftwo
+		\fi
+	}%
+	\providecommand \@ifx [1]{%
+		\ifx #1\expandafter \@firstoftwo
+		\else \expandafter \@secondoftwo
+		\fi
+	}%
+	\providecommand \natexlab [1]{#1}%
+	\providecommand \enquote  [1]{``#1''}%
+	\providecommand \bibnamefont  [1]{#1}%
+	\providecommand \bibfnamefont [1]{#1}%
+	\providecommand \citenamefont [1]{#1}%
+	\providecommand \href@noop [0]{\@secondoftwo}%
+	\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+	\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+	\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+	\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+		`\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+	\providecommand \@@startlink[1]{}%
+	\providecommand \@@endlink[0]{}%
+	\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+	\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+	\providecommand \urlprefix  [0]{URL }%
+	\providecommand \Eprint [0]{\href }%
+	\providecommand \doibase [0]{http://dx.doi.org/}%
+	\providecommand \selectlanguage [0]{\@gobble}%
+	\providecommand \bibinfo  [0]{\@secondoftwo}%
+	\providecommand \bibfield  [0]{\@secondoftwo}%
+	\providecommand \translation [1]{[#1]}%
+	\providecommand \BibitemOpen [0]{}%
+	\providecommand \bibitemStop [0]{}%
+	\providecommand \bibitemNoStop [0]{.\EOS\space}%
+	\providecommand \EOS [0]{\spacefactor3000\relax}%
+	\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+	\let\auto@bib@innerbib\@empty
+	%</preamble>
+	\bibitem [{\citenamefont {Onida}\ \emph {et~al.}(2002)\citenamefont {Onida},
+		\citenamefont {Reining},\ and\ \citenamefont {Rubio}}]{ORR02}%
+	\BibitemOpen
+	\bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+			{Onida}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Reining}}, \
+		and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Rubio}},\
+	}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Rev. Mod. Phys.}\
+	}\textbf {\bibinfo {volume} {74}},\ \bibinfo {pages} {601} (\bibinfo {year}
+	{2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Raether}(2006)}]{R06}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+		{Raether}},\ }\href@noop {} {\emph {\bibinfo {title} {Excitation of plasmons
+			and interband transitions by electrons}}},\ Vol.~\bibinfo {volume} {88}\
+(\bibinfo  {publisher} {Springer},\ \bibinfo {year} {2006})\BibitemShut
+{NoStop}%
+\bibitem [{\citenamefont {Sch{\"u}lke}\ \emph {et~al.}(1995)\citenamefont
+	{Sch{\"u}lke}, \citenamefont {Schmitz}, \citenamefont {Schulte-Schrepping},\
+	and\ \citenamefont {Kaprolat}}]{SSSK95}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+		{Sch{\"u}lke}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+		{Schmitz}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+		{Schulte-Schrepping}}, \ and\ \bibinfo {author} {\bibfnamefont
+		{A.}~\bibnamefont {Kaprolat}},\ }\href@noop {} {\bibfield  {journal}
+	{\bibinfo  {journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {52}},\
+	\bibinfo {pages} {11721} (\bibinfo {year} {1995})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Runge}\ and\ \citenamefont {Gross}(1984)}]{RG84}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+		{Runge}}\ and\ \bibinfo {author} {\bibfnamefont {E.~K.}\ \bibnamefont
+		{Gross}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. Lett.}\ }\textbf {\bibinfo {volume} {52}},\ \bibinfo {pages} {997}
+	(\bibinfo {year} {1984})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ullrich}(2011)}]{U11}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~A.}\ \bibnamefont
+		{Ullrich}},\ }\href@noop {} {\emph {\bibinfo {title} {Time-dependent
+			density-functional theory: concepts and applications}}}\ (\bibinfo
+{publisher} {OUP Oxford},\ \bibinfo {year} {2011})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pines}(1964)}]{P64}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+		{Pines}},\ }\href@noop {} {\emph {\bibinfo {title} {Elementary Excitations in
+			Solids}}}\ (\bibinfo  {publisher} {Benjamin, New York},\ \bibinfo {year}
+{1964})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Giuliani}\ and\ \citenamefont
+	{Vignale}(2005)}]{GV05}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+		{Giuliani}}\ and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+		{Vignale}},\ }\href@noop {} {\emph {\bibinfo {title} {Quantum theory of the
+			electron liquid}}}\ (\bibinfo  {publisher} {Cambridge university press},\
+\bibinfo {year} {2005})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Petersilka}\ \emph {et~al.}(1996)\citenamefont
+	{Petersilka}, \citenamefont {Gossmann},\ and\ \citenamefont {Gross}}]{PGG96}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+		{Petersilka}}, \bibinfo {author} {\bibfnamefont {U.}~\bibnamefont
+		{Gossmann}}, \ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+		{Gross}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. Lett.}\ }\textbf {\bibinfo {volume} {76}},\ \bibinfo {pages} {1212}
+	(\bibinfo {year} {1996})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Vom~Felde}\ \emph {et~al.}(1989)\citenamefont
+	{Vom~Felde}, \citenamefont {Spr{\"o}sser-Prou},\ and\ \citenamefont
+	{Fink}}]{VSF89}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+		{Vom~Felde}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+		{Spr{\"o}sser-Prou}}, \ and\ \bibinfo {author} {\bibfnamefont
+		{J.}~\bibnamefont {Fink}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+		{journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {40}},\ \bibinfo
+	{pages} {10181} (\bibinfo {year} {1989})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pines}\ and\ \citenamefont
+	{Nozi\`eres}(1966)}]{PN66}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+		{Pines}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+		{Nozi\`eres}},\ }\href@noop {} {\emph {\bibinfo {title} {The Theory of
+			Quantum Liquids V. 1: Normal Fermi Liquids}}}\ (\bibinfo  {publisher}
+{Benjamin},\ \bibinfo {year} {1966})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Vignale}\ and\ \citenamefont {Kohn}(1996)}]{VK96}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+		{Vignale}}\ and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Kohn}},\
+}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\
+}\textbf {\bibinfo {volume} {77}},\ \bibinfo {pages} {2037} (\bibinfo {year}
+{1996})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Vignale}\ \emph {et~al.}(1997)\citenamefont
+	{Vignale}, \citenamefont {Ullrich},\ and\ \citenamefont {Conti}}]{VUC97}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+		{Vignale}}, \bibinfo {author} {\bibfnamefont {C.~A.}\ \bibnamefont
+		{Ullrich}}, \ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+		{Conti}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. Lett.}\ }\textbf {\bibinfo {volume} {79}},\ \bibinfo {pages} {4878}
+	(\bibinfo {year} {1997})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ullrich}\ and\ \citenamefont {Vignale}(2002)}]{UV02}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~A.}\ \bibnamefont
+		{Ullrich}}\ and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+		{Vignale}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. B}\ }\textbf {\bibinfo {volume} {65}},\ \bibinfo {pages} {245102}
+	(\bibinfo {year} {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ruzsinszky}\ \emph {et~al.}(2020)\citenamefont
+	{Ruzsinszky}, \citenamefont {Nepal}, \citenamefont {Pitarke},\ and\
+	\citenamefont {Perdew}}]{RNPP}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+		{Ruzsinszky}}, \bibinfo {author} {\bibfnamefont {N.~K.}\ \bibnamefont
+		{Nepal}}, \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Pitarke}},
+	\ and\ \bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont {Perdew}},\
+}\href@noop {} {\enquote {\bibinfo {title} {Constraint-based wavevector- and
+		frequency-dependent exchange-correlation kernel of the uniform electron
+		gas},}\ } (\bibinfo {year} {2020}),\ \Eprint
+{http://arxiv.org/abs/2004.09324} {arXiv:2004.09324 [physics.chem-ph]}
+\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Aryasetiawan}\ and\ \citenamefont
+	{Karlsson}(1994)}]{AK94}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+		{Aryasetiawan}}\ and\ \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+		{Karlsson}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+		{Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {73}},\ \bibinfo {pages}
+	{1679} (\bibinfo {year} {1994})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ku}\ and\ \citenamefont {Eguiluz}(1999)}]{KE99}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+		{Ku}}\ and\ \bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+		{Eguiluz}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. Lett.}\ }\textbf {\bibinfo {volume} {82}},\ \bibinfo {pages} {2350}
+	(\bibinfo {year} {1999})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Taut}(1992)}]{T92}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+		{Taut}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {J. Phys.
+			Condens. Matter}\ }\textbf {\bibinfo {volume} {4}},\ \bibinfo {pages} {9595}
+	(\bibinfo {year} {1992})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Taut}\ and\ \citenamefont {Sturm}(1992)}]{TS92}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+		{Taut}}\ and\ \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Sturm}},\
+}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Solid State
+		Commun.}\ }\textbf {\bibinfo {volume} {82}},\ \bibinfo {pages} {295}
+(\bibinfo {year} {1992})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bohm}\ and\ \citenamefont {Pines}(1953)}]{BP53}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+		{Bohm}}\ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Pines}},\
+}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev.}\
+}\textbf {\bibinfo {volume} {92}},\ \bibinfo {pages} {609} (\bibinfo {year}
+{1953})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Nepal}\ \emph {et~al.}(2018)\citenamefont {Nepal},
+	\citenamefont {Ruzsinszky},\ and\ \citenamefont {Bates}}]{NRB18}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~K.}\ \bibnamefont
+		{Nepal}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Ruzsinszky}}, \
+	and\ \bibinfo {author} {\bibfnamefont {J.~E.}\ \bibnamefont {Bates}},\ }\href
+{\doibase 10.1103/PhysRevB.97.115140} {\bibfield  {journal} {\bibinfo
+		{journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {97}},\ \bibinfo
+	{pages} {115140} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Nepal}\ \emph {et~al.}(2019)\citenamefont {Nepal},
+	\citenamefont {Adhikari}, \citenamefont {Bates},\ and\ \citenamefont
+	{Ruzsinszky}}]{NABR19}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~K.}\ \bibnamefont
+		{Nepal}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Adhikari}},
+	\bibinfo {author} {\bibfnamefont {J.~E.}\ \bibnamefont {Bates}}, \ and\
+	\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Ruzsinszky}},\ }\href
+{\doibase 10.1103/PhysRevB.100.045135} {\bibfield  {journal} {\bibinfo
+		{journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {100}},\ \bibinfo
+	{pages} {045135} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Schimka}\ \emph {et~al.}(2013)\citenamefont
+	{Schimka}, \citenamefont {Gaudoin}, \citenamefont
+	{Klime\ifmmode~\check{s}\else \v{s}\fi{}}, \citenamefont {Marsman},\ and\
+	\citenamefont {Kresse}}]{SGK13}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+		{Schimka}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Gaudoin}},
+	\bibinfo {author} {\bibfnamefont {J.~c.~v.}\ \bibnamefont
+		{Klime\ifmmode~\check{s}\else \v{s}\fi{}}}, \bibinfo {author} {\bibfnamefont
+		{M.}~\bibnamefont {Marsman}}, \ and\ \bibinfo {author} {\bibfnamefont
+		{G.}~\bibnamefont {Kresse}},\ }\href {\doibase 10.1103/PhysRevB.87.214102}
+{\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. B}\ }\textbf {\bibinfo
+		{volume} {87}},\ \bibinfo {pages} {214102} (\bibinfo {year}
+	{2013})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Harl}\ \emph {et~al.}(2010)\citenamefont {Harl},
+	\citenamefont {Schimka},\ and\ \citenamefont {Kresse}}]{HSK10}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+		{Harl}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Schimka}}, \
+	and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Kresse}},\ }\href
+{\doibase 10.1103/PhysRevB.81.115126} {\bibfield  {journal} {\bibinfo
+		{journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {81}},\ \bibinfo
+	{pages} {115126} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Langreth}\ and\ \citenamefont {Perdew}(1975)}]{LP75}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~C.}\ \bibnamefont
+		{Langreth}}\ and\ \bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont
+		{Perdew}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Solid
+			State Commun.}\ }\textbf {\bibinfo {volume} {17}},\ \bibinfo {pages} {1425}
+	(\bibinfo {year} {1975})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Langreth}\ and\ \citenamefont {Perdew}(1977)}]{LP77}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~C.}\ \bibnamefont
+		{Langreth}}\ and\ \bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont
+		{Perdew}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. B}\ }\textbf {\bibinfo {volume} {15}},\ \bibinfo {pages} {2884}
+	(\bibinfo {year} {1977})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tatarczyk}\ \emph {et~al.}(2001)\citenamefont
+	{Tatarczyk}, \citenamefont {Schindlmayr},\ and\ \citenamefont
+	{Scheffler}}]{TSS01}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+		{Tatarczyk}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+		{Schindlmayr}}, \ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+		{Scheffler}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+		{Phys. Rev. B}\ }\textbf {\bibinfo {volume} {63}},\ \bibinfo {pages} {235106}
+	(\bibinfo {year} {2001})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ashcroft}\ and\ \citenamefont {Mermin}(2005)}]{AM05}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~W.}\ \bibnamefont
+		{Ashcroft}}\ and\ \bibinfo {author} {\bibfnamefont {N.~D.}\ \bibnamefont
+		{Mermin}},\ }\href@noop {} {\emph {\bibinfo {title} {Solid State Physics
+			(Holt, Rinehart and Winston, New York, 1976)}}}\ (\bibinfo {year}
+{2005})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sun}\ \emph {et~al.}(2016)\citenamefont {Sun},
+	\citenamefont {Remsing}, \citenamefont {Zhang}, \citenamefont {Sun},
+	\citenamefont {Ruzsinszky}, \citenamefont {Peng}, \citenamefont {Yang},
+	\citenamefont {Paul}, \citenamefont {Waghmare}, \citenamefont {Wu} \emph
+	{et~al.}}]{SRZSRP16}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+		{Sun}}, \bibinfo {author} {\bibfnamefont {R.~C.}\ \bibnamefont {Remsing}},
+	\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Zhang}}, \bibinfo
+	{author} {\bibfnamefont {Z.}~\bibnamefont {Sun}}, \bibinfo {author}
+	{\bibfnamefont {A.}~\bibnamefont {Ruzsinszky}}, \bibinfo {author}
+	{\bibfnamefont {H.}~\bibnamefont {Peng}}, \bibinfo {author} {\bibfnamefont
+		{Z.}~\bibnamefont {Yang}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+		{Paul}}, \bibinfo {author} {\bibfnamefont {U.}~\bibnamefont {Waghmare}},
+	\bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {Wu}},  \emph {et~al.},\
+}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Nat. Chem.}\
+}\textbf {\bibinfo {volume} {8}},\ \bibinfo {pages} {831} (\bibinfo {year}
+{2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Perdew}\ \emph {et~al.}(2005)\citenamefont {Perdew},
+	\citenamefont {Ruzsinszky}, \citenamefont {Tao}, \citenamefont {Staroverov},
+	\citenamefont {Scuseria},\ and\ \citenamefont {Csonka}}]{PRTSSC05}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont
+		{Perdew}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Ruzsinszky}},
+	\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Tao}}, \bibinfo {author}
+	{\bibfnamefont {V.~N.}\ \bibnamefont {Staroverov}}, \bibinfo {author}
+	{\bibfnamefont {G.~E.}\ \bibnamefont {Scuseria}}, \ and\ \bibinfo {author}
+	{\bibfnamefont {G.~I.}\ \bibnamefont {Csonka}},\ }\href@noop {} {\bibfield
+	{journal} {\bibinfo  {journal} {J. Chem. Phys.}\ }\textbf {\bibinfo {volume}
+		{123}},\ \bibinfo {pages} {062201} (\bibinfo {year} {2005})}\BibitemShut
+{NoStop}%
+\bibitem [{\citenamefont {Lindhard}(1954)}]{L54}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+		{Lindhard}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Dan.
+			Vid. Selsk Mat.-Fys. Medd.}\ }\textbf {\bibinfo {volume} {28}},\ \bibinfo
+	{pages} {8} (\bibinfo {year} {1954})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zangwill}\ and\ \citenamefont {Soven}(1980)}]{ZS80}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+		{Zangwill}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+		{Soven}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. A}\ }\textbf {\bibinfo {volume} {21}},\ \bibinfo {pages} {1561}
+	(\bibinfo {year} {1980})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lein}\ \emph {et~al.}(2000)\citenamefont {Lein},
+	\citenamefont {Gross},\ and\ \citenamefont {Perdew}}]{LGP00}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+		{Lein}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Gross}}, \ and\
+	\bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont {Perdew}},\
+}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. B}\
+}\textbf {\bibinfo {volume} {61}},\ \bibinfo {pages} {13431} (\bibinfo {year}
+{2000})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Olsen}\ and\ \citenamefont {Thygesen}(2012)}]{OT12}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+		{Olsen}}\ and\ \bibinfo {author} {\bibfnamefont {K.~S.}\ \bibnamefont
+		{Thygesen}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+		{Phys. Rev. B}\ }\textbf {\bibinfo {volume} {86}},\ \bibinfo {pages} {081103}
+	(\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bates}\ \emph {et~al.}(2016)\citenamefont {Bates},
+	\citenamefont {Laricchia},\ and\ \citenamefont {Ruzsinszky}}]{BLR16}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~E.}\ \bibnamefont
+		{Bates}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Laricchia}}, \
+	and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Ruzsinszky}},\
+}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. B}\
+}\textbf {\bibinfo {volume} {93}},\ \bibinfo {pages} {045119} (\bibinfo
+{year} {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Weizs{\"a}cker}(1935)}]{W35}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~V.}\ \bibnamefont
+		{Weizs{\"a}cker}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+		{Zeitschrift f{\"u}r Physik}\ }\textbf {\bibinfo {volume} {96}},\ \bibinfo
+	{pages} {431} (\bibinfo {year} {1935})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {von Barth}\ and\ \citenamefont {Hedin}(1972)}]{VH72}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {U.}~\bibnamefont {von
+			Barth}}\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Hedin}},\
+}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {J. Phys. Condens.
+		Matter}\ }\textbf {\bibinfo {volume} {5}},\ \bibinfo {pages} {1629} (\bibinfo
+{year} {1972})},\ \bibinfo {note} {and references therein}\BibitemShut
+{NoStop}%
+\bibitem [{\citenamefont {Constantin}\ and\ \citenamefont
+	{Pitarke}(2007)}]{CP07}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~A.}\ \bibnamefont
+		{Constantin}}\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+		{Pitarke}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. B}\ }\textbf {\bibinfo {volume} {75}},\ \bibinfo {pages} {245127}
+	(\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ichimaru}(1982)}]{I82}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+		{Ichimaru}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Rev
+			Mod. Phys.}\ }\textbf {\bibinfo {volume} {54}},\ \bibinfo {pages} {1017}
+	(\bibinfo {year} {1982})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Singwi}\ \emph {et~al.}(1968)\citenamefont {Singwi},
+	\citenamefont {Tosi}, \citenamefont {Land},\ and\ \citenamefont
+	{Sj{\"o}lander}}]{STLS68}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+		{Singwi}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Tosi}},
+	\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Land}}, \ and\ \bibinfo
+	{author} {\bibfnamefont {A.}~\bibnamefont {Sj{\"o}lander}},\ }\href@noop {}
+{\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo
+		{volume} {176}},\ \bibinfo {pages} {589} (\bibinfo {year}
+	{1968})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Quong}\ and\ \citenamefont {Eguiluz}(1993)}]{QE93}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~A.}\ \bibnamefont
+		{Quong}}\ and\ \bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+		{Eguiluz}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. Lett.}\ }\textbf {\bibinfo {volume} {70}},\ \bibinfo {pages} {3955}
+	(\bibinfo {year} {1993})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ruzsinszky}\ \emph {et~al.}(2016)\citenamefont
+	{Ruzsinszky}, \citenamefont {Constantin},\ and\ \citenamefont
+	{Pitarke}}]{RCP16}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+		{Ruzsinszky}}, \bibinfo {author} {\bibfnamefont {L.~A.}\ \bibnamefont
+		{Constantin}}, \ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+		{Pitarke}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. B}\ }\textbf {\bibinfo {volume} {94}},\ \bibinfo {pages} {165155}
+	(\bibinfo {year} {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Petri}\ and\ \citenamefont {Otto}(1975)}]{PO75}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+		{Petri}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Otto}},\
+}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\
+}\textbf {\bibinfo {volume} {34}},\ \bibinfo {pages} {1283} (\bibinfo {year}
+{1975})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fleszar}\ \emph {et~al.}(1997)\citenamefont
+	{Fleszar}, \citenamefont {Stumpf},\ and\ \citenamefont {Eguiluz}}]{FSE97}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+		{Fleszar}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Stumpf}}, \
+	and\ \bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont {Eguiluz}},\
+}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. B}\
+}\textbf {\bibinfo {volume} {55}},\ \bibinfo {pages} {2068} (\bibinfo {year}
+{1997})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Walter}\ \emph {et~al.}(2008)\citenamefont {Walter},
+	\citenamefont {H{\"a}kkinen}, \citenamefont {Lehtovaara}, \citenamefont
+	{Puska}, \citenamefont {Enkovaara}, \citenamefont {Rostgaard},\ and\
+	\citenamefont {Mortensen}}]{gpaw1}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+		{Walter}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+		{H{\"a}kkinen}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+		{Lehtovaara}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Puska}},
+	\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Enkovaara}}, \bibinfo
+	{author} {\bibfnamefont {C.}~\bibnamefont {Rostgaard}}, \ and\ \bibinfo
+	{author} {\bibfnamefont {J.~J.}\ \bibnamefont {Mortensen}},\ }\href {\doibase
+	10.1063/1.2943138} {\bibfield  {journal} {\bibinfo  {journal} {J. Chem.
+			Phys.}\ }\textbf {\bibinfo {volume} {128}},\ \bibinfo {pages} {244101}
+	(\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mortensen}\ \emph {et~al.}(2005)\citenamefont
+	{Mortensen}, \citenamefont {Hansen},\ and\ \citenamefont {Jacobsen}}]{gpaw2}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~J.}\ \bibnamefont
+		{Mortensen}}, \bibinfo {author} {\bibfnamefont {L.~B.}\ \bibnamefont
+		{Hansen}}, \ and\ \bibinfo {author} {\bibfnamefont {K.~W.}\ \bibnamefont
+		{Jacobsen}},\ }\href {\doibase 10.1103/PhysRevB.71.035109} {\bibfield
+	{journal} {\bibinfo  {journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume}
+		{71}},\ \bibinfo {pages} {035109} (\bibinfo {year} {2005})}\BibitemShut
+{NoStop}%
+\bibitem [{\citenamefont {Yan}\ \emph {et~al.}(2011)\citenamefont {Yan},
+	\citenamefont {Mortensen}, \citenamefont {Jacobsen},\ and\ \citenamefont
+	{Thygesen}}]{gpaw_response}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+		{Yan}}, \bibinfo {author} {\bibfnamefont {J.~J.}\ \bibnamefont {Mortensen}},
+	\bibinfo {author} {\bibfnamefont {K.~W.}\ \bibnamefont {Jacobsen}}, \ and\
+	\bibinfo {author} {\bibfnamefont {K.~S.}\ \bibnamefont {Thygesen}},\ }\href
+{\doibase 10.1103/PhysRevB.83.245122} {\bibfield  {journal} {\bibinfo
+		{journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {83}},\ \bibinfo
+	{pages} {245122} (\bibinfo {year} {2011})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bahn}\ and\ \citenamefont {Jacobsen}(2002)}]{ase}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~R.}\ \bibnamefont
+		{Bahn}}\ and\ \bibinfo {author} {\bibfnamefont {K.~W.}\ \bibnamefont
+		{Jacobsen}},\ }\href {\doibase 10.1109/5992.998641} {\bibfield  {journal}
+	{\bibinfo  {journal} {Comput. Sci. Eng.}\ }\textbf {\bibinfo {volume} {4}},\
+	\bibinfo {pages} {56} (\bibinfo {year} {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bl\"{o}chl}(1994)}]{B94}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~E.}\ \bibnamefont
+		{Bl\"{o}chl}},\ }\href {\doibase 10.1103/PhysRevB.50.17953} {\bibfield
+	{journal} {\bibinfo  {journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume}
+		{50}},\ \bibinfo {pages} {17953} (\bibinfo {year} {1994})}\BibitemShut
+{NoStop}%
+\bibitem [{\citenamefont {Jensen}\ and\ \citenamefont {Plummer}(1985)}]{JP85}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+		{Jensen}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+		{Plummer}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. Lett.}\ }\textbf {\bibinfo {volume} {55}},\ \bibinfo {pages} {1912}
+	(\bibinfo {year} {1985})},\ \bibinfo {note} {; P.H. Citrin et al, ibid. 61,
+	1021 (1988); B. S. Itchkawitz et al., ibid. 68, 2488 (1993)}\BibitemShut
+{NoStop}%
+\bibitem [{\citenamefont {Lewis}\ and\ \citenamefont
+	{Berkelbach}(2019)}]{LB19}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+		{Lewis}}\ and\ \bibinfo {author} {\bibfnamefont {T.~C.}\ \bibnamefont
+		{Berkelbach}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+		{Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {122}},\ \bibinfo {pages}
+	{226402} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Iwamoto}\ and\ \citenamefont {Gross}(1987)}]{IG87}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+		{Iwamoto}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+		{Gross}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+			Rev. B}\ }\textbf {\bibinfo {volume} {35}},\ \bibinfo {pages} {3003}
+	(\bibinfo {year} {1987})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gross}\ and\ \citenamefont {Kohn}(1985)}]{GK85}%
+\BibitemOpen
+\bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+		{Gross}}\ and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Kohn}},\
+}\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\
+}\textbf {\bibinfo {volume} {55}},\ \bibinfo {pages} {2850} (\bibinfo {year}
+{1985})}\BibitemShut {NoStop}%
+\end{thebibliography}%
+
+
+
+
+\end{document}

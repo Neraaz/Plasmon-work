@@ -1,0 +1,117 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Manuscript.aux
+The style file: apsrev4-1.bst
+I found no \bibdata command---while reading file Manuscript.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--I didn't find a database entry for "ORR02"
+Warning--I didn't find a database entry for "R06"
+Warning--I didn't find a database entry for "SSSK95"
+Warning--I didn't find a database entry for "RG84"
+Warning--I didn't find a database entry for "U11"
+Warning--I didn't find a database entry for "P64"
+Warning--I didn't find a database entry for "GV05"
+Warning--I didn't find a database entry for "PGG96"
+Warning--I didn't find a database entry for "VSF89"
+Warning--I didn't find a database entry for "PN66"
+Warning--I didn't find a database entry for "VK96"
+Warning--I didn't find a database entry for "VUC97"
+Warning--I didn't find a database entry for "UV02"
+Warning--I didn't find a database entry for "RNPP"
+Warning--I didn't find a database entry for "AK94"
+Warning--I didn't find a database entry for "KE99"
+Warning--I didn't find a database entry for "T92"
+Warning--I didn't find a database entry for "TS92"
+Warning--I didn't find a database entry for "BP53"
+Warning--I didn't find a database entry for "NRB18"
+Warning--I didn't find a database entry for "NABR19"
+Warning--I didn't find a database entry for "SGK13"
+Warning--I didn't find a database entry for "HSK10"
+Warning--I didn't find a database entry for "LP75"
+Warning--I didn't find a database entry for "LP77"
+Warning--I didn't find a database entry for "TSS01"
+Warning--I didn't find a database entry for "AM05"
+Warning--I didn't find a database entry for "SRZSRP16"
+Warning--I didn't find a database entry for "PRTSSC05"
+Warning--I didn't find a database entry for "L54"
+Warning--I didn't find a database entry for "ZS80"
+Warning--I didn't find a database entry for "LGP00"
+Warning--I didn't find a database entry for "OT12"
+Warning--I didn't find a database entry for "BLR16"
+Warning--I didn't find a database entry for "W35"
+Warning--I didn't find a database entry for "VH72"
+Warning--I didn't find a database entry for "CP07"
+Warning--I didn't find a database entry for "I82"
+Warning--I didn't find a database entry for "STLS68"
+Warning--I didn't find a database entry for "QE93"
+Warning--I didn't find a database entry for "RCP16"
+Warning--I didn't find a database entry for "PO75"
+Warning--I didn't find a database entry for "FSE97"
+Warning--I didn't find a database entry for "gpaw1"
+Warning--I didn't find a database entry for "gpaw2"
+Warning--I didn't find a database entry for "gpaw_response"
+Warning--I didn't find a database entry for "ase"
+Warning--I didn't find a database entry for "B94"
+Warning--I didn't find a database entry for "JP85"
+Warning--I didn't find a database entry for "LB19"
+Warning--I didn't find a database entry for "IG87"
+Warning--I didn't find a database entry for "GK85"
+Warning--I didn't find a database entry for "REVTEX41Control"
+Warning--I didn't find a database entry for "apsrev41Control"
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+Control: key (0) 
+Control: author (72) initials jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (-1) disabled
+Control: page (0) single
+Control: year (1) truncated
+Control: production of eprint (0) enabled
+You've used 0 entries,
+            5847 wiz_defined-function locations,
+            1699 strings with 15095 characters,
+and the built_in function-call counts, 313 in all, are:
+= -- 0
+> -- 3
+< -- 5
++ -- 2
+- -- 0
+* -- 65
+:= -- 29
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 19
+empty$ -- 1
+format.name$ -- 0
+if$ -- 26
+int.to.chr$ -- 1
+int.to.str$ -- 8
+missing$ -- 0
+newline$ -- 52
+num.names$ -- 0
+pop$ -- 6
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 8
+stack$ -- 0
+substring$ -- 0
+swap$ -- 27
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 8
+type$ -- 0
+warning$ -- 0
+while$ -- 0
+width$ -- 0
+write$ -- 52
+(There was 1 error message)
